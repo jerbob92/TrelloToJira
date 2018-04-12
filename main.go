@@ -28,6 +28,8 @@ func main() {
 	JiraUsername := flag.String("jira_username", os.Getenv("JIRA_USERNAME"), "The JIRA password")
 	JiraPassword := flag.String("jira_password", os.Getenv("JIRA_PASSWORD"), "The JIRA username")
 
+	flag.Parse()
+
 	if TrelloAppKey == nil || *TrelloAppKey == "" {
 		log.Fatal("Missing Trello App Key")
 	}
