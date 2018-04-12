@@ -29,7 +29,7 @@ You can also set the options by using your environment. Use the same names but i
 Download any of the releases that matches your platform. You don't need any dependencies to run the program
 
 ## Compiling
-I used Go 1.10 to test, but it should work on most versions, make sure that you have [Godeps](https://github.com/tools/godep) available.
+I used Go 1.9 to develop, but it should work on most versions, make sure that you have [Godeps](https://github.com/tools/godep) available.
 ```
 git clone https://github.com/jerbob92/TrelloToJira.git
 cd TrelloToJira
