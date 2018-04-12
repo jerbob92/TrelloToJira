@@ -12,4 +12,4 @@ before_install:
   - go get github.com/tcnksm/ghr
 after_success:
   - test "$TRAVIS_TAG" != "" && gox -output "dist/{{.OS}}_{{.Arch}}_{{.Dir}}" -ldflags "-X main.Version=$TRAVIS_TAG"
-  - test "$TRAVIS_TAG" != "" && ghr --username VDMi --repository TrelloToJira --token $GITHUB_TOKEN -c $TRAVIS_COMMIT --replace --debug "$TRAVIS_TAG" dist/
+  - test "$TRAVIS_TAG" != "" && ghr --username jerbob92 --repository TrelloToJira --token $GITHUB_TOKEN -c $TRAVIS_COMMIT --replace --debug "$TRAVIS_TAG" dist/
