@@ -1,0 +1,57 @@
+{
+	"ImportPath": "github.com/jerbob92/TrelloToJira",
+	"GoVersion": "go1.9",
+	"GodepVersion": "v79",
+	"Deps": [
+		{
+			"ImportPath": "github.com/adlio/trello",
+			"Rev": "03c11d8e072fc7afaff3660639f3420cd7078a3c"
+		},
+		{
+			"ImportPath": "github.com/andygrunwald/go-jira",
+			"Comment": "v1.2.0",
+			"Rev": "7f227a275b41edf4802e14487c22f7d960a02488"
+		},
+		{
+			"ImportPath": "github.com/fatih/structs",
+			"Comment": "v1.0-15-gebf56d3",
+			"Rev": "ebf56d35bba727c68ac77f56f2fcf90b181851aa"
+		},
+		{
+			"ImportPath": "github.com/google/go-querystring/query",
+			"Rev": "53e6ce116135b80d037921a7fdd5138cf32d7a8a"
+		},
+		{
+			"ImportPath": "github.com/pkg/errors",
+			"Comment": "v0.8.0-11-g30136e2",
+			"Rev": "30136e27e2ac8d167177e8a583aa4c3fea5be833"
+		},
+		{
+			"ImportPath": "github.com/sirupsen/logrus",
+			"Comment": "v1.0.4",
+			"Rev": "d682213848ed68c0a260ca37d6dd5ace8423f5ba"
+		},
+		{
+			"ImportPath": "github.com/trivago/tgo/tcontainer",
+			"Comment": "v1.0.1",
+			"Rev": "e4d1ddd28c17dd89ed26327cf69fded22060671b"
+		},
+		{
+			"ImportPath": "github.com/trivago/tgo/treflect",
+			"Comment": "v1.0.1",
+			"Rev": "e4d1ddd28c17dd89ed26327cf69fded22060671b"
+		},
+		{
+			"ImportPath": "golang.org/x/crypto/ssh/terminal",
+			"Rev": "94eea52f7b742c7cbe0b03b22f0c4c8631ece122"
+		},
+		{
+			"ImportPath": "golang.org/x/sys/unix",
+			"Rev": "1d2aa6dbdea45adaaebb9905d0666e4537563829"
+		},
+		{
+			"ImportPath": "golang.org/x/sys/windows",
+			"Rev": "1d2aa6dbdea45adaaebb9905d0666e4537563829"
+		}
+	]
+}
