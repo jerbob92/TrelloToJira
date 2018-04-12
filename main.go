@@ -3,19 +3,19 @@ package main
 import (
 	"flag"
 	"fmt"
+	"net/http"
 	"os"
 	"strconv"
 	"strings"
+	"time"
 
 	"github.com/jerbob92/TrelloToJira/helpers"
 	"github.com/jerbob92/TrelloToJira/jira_import"
+	"github.com/jerbob92/TrelloToJira/trello_export"
 
 	"github.com/adlio/trello"
 	"github.com/andygrunwald/go-jira"
 	log "github.com/sirupsen/logrus"
-	"net/http"
-	"github.com/jerbob92/TrelloToJira/trello_export"
-	"time"
 )
 
 var TrelloClient *trello.Client
@@ -267,8 +267,10 @@ func exportTrelloBoard(board helpers.MigrateMap) error {
 			}
 
 			var assignee *jira.User
+			append_trello_member := ""
 			if card.Members != nil && len(card.Members) > 0 {
 				for _, user_map := range board.UserMap {
+					append_trello_member = " (by: " + card.Members[0].FullName + ")"
 					if user_map.TrelloMember.ID == card.Members[0].ID {
 						assignee = &jira.User{
 							Name: user_map.JiraUser.Name,
@@ -281,7 +283,7 @@ func exportTrelloBoard(board helpers.MigrateMap) error {
 			i := jira.Issue{
 				Fields: &jira.IssueFields{
 					Assignee:    assignee,
-					Description: "Imported from Trello " + card.ShortUrl + "\n" + card.Desc,
+					Description: "Imported from Trello " + card.ShortUrl + append_trello_member + "\n" + card.Desc,
 					Type: jira.IssueType{
 						Name: "Task",
 					},
@@ -348,13 +350,17 @@ func exportTrelloBoard(board helpers.MigrateMap) error {
 			} else {
 				if len(card_comments) > 0 {
 					for _, card_comment := range card_comments {
+
 						jira_comment := jira.Comment{
-							Body: "Imported from Trello " + card.ShortUrl + "\n" + card_comment.Data.Text,
+							Body:    "",
 							Created: card_comment.Date.Format(time.RFC3339),
 						}
 
+						append_trello_member := ""
+
 						if card_comment.MemberCreator != nil {
 							for _, user_map := range board.UserMap {
+								append_trello_member = " (by: " + card_comment.MemberCreator.FullName + ")"
 								if user_map.TrelloMember.ID == card_comment.MemberCreator.ID {
 									jira_comment.Author = jira.User{
 										Name: user_map.JiraUser.Name,
@@ -363,6 +369,8 @@ func exportTrelloBoard(board helpers.MigrateMap) error {
 								}
 							}
 						}
+
+						jira_comment.Body = "Imported from Trello " + card.ShortUrl + append_trello_member + "\n" + card_comment.Data.Text
 
 						_, _, err = JiraClient.Issue.AddComment(issue.Key, &jira_comment)
 						if err != nil {
@@ -373,6 +381,9 @@ func exportTrelloBoard(board helpers.MigrateMap) error {
 					}
 				}
 			}
+
+			// Sleep one second to prevent going over the API rate limit.
+			time.Sleep(time.Second)
 		}
 	}
 

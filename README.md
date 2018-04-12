@@ -12,7 +12,7 @@ The tool is interactive, it will ask you questions before migrating.
  - Migrate card comments
 
 ## What's missing?
-Probably some stuff that I didn't need, like checklists. The code is quite simple, MR's are welcome.
+Probably some stuff that I didn't need, like checklists. The code is quite simple, PR's are welcome.
 
 ## Options
 | Parameter              | Default Value    | Description  |
@@ -26,7 +26,7 @@ Probably some stuff that I didn't need, like checklists. The code is quite simpl
 You can also set the options by using your environment. Use the same names but in uppercase.
 
 ## Running
-Download any of the releases that matches your platform. You don't need any dependencies to run the program
+Download any of the releases that matches your platform. You don't need any dependencies to run the program.
 
 ## Compiling
 I used Go 1.9 to develop, but it should work on most versions, make sure that you have [Godeps](https://github.com/tools/godep) available.
