@@ -23,8 +23,20 @@ Probably some stuff that I didn't need, like checklists. The code is quite simpl
 | --jira_username          | ""               | Jira Username |
 | --jira_password        | ""               | Jira Password |
 
-## Builds
-The package has several builds, for many different operating systems, check the releases tab.
+You can also set the options by using your environment. Use the same names but in uppercase.
 
-If you do not wish to download a binary, and have go running locally, you can execute the following command:
-```go install```
+## Running
+Download any of the releases that matches your platform. You don't need any dependencies to run the program
+
+## Compiling
+I used Go 1.10 to test, but it should work on most versions, make sure that you have [Godeps](https://github.com/tools/godep) available.
+```
+git clone https://github.com/jerbob92/TrelloToJira.git
+cd TrelloToJira
+godep restore
+go build
+./TrelloToJira
+```
+
+After the ```go build```, ```TrelloToJira``` will contain the compiled binary.
+You can also use ```go run``` to run the program without compiling.
